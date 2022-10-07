@@ -65,21 +65,21 @@ CREATE TABLE IF NOT EXISTS `ventas` (
  FOREIGN KEY (`id_proveedor`) REFERENCES `proveedores`(`id_proveedor`) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
-CREATE TABLE IF NOT EXISTS `proveedores-productos` (
+CREATE TABLE IF NOT EXISTS `proveedores_productos` (
    `id_producto` INT NOT NULL,
    `id_proveedor` INT NOT NULL,
    FOREIGN KEY (`id_producto`) REFERENCES `productos`(`id_producto`) ON DELETE CASCADE ON UPDATE CASCADE,
    FOREIGN KEY (`id_proveedor`) REFERENCES `proveedores`(`id_proveedor`) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
-CREATE TABLE IF NOT EXISTS `proveedores-servicios` (
+CREATE TABLE IF NOT EXISTS `proveedores_servicios` (
    `id_servicio` INT NOT NULL,
    `id_proveedor` INT NOT NULL,
    FOREIGN KEY (`id_servicio`) REFERENCES `servicios`(`id_servicio`) ON DELETE CASCADE ON UPDATE CASCADE,
    FOREIGN KEY (`id_proveedor`) REFERENCES `proveedores`(`id_proveedor`) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
-CREATE TABLE IF NOT EXISTS `clientes-servicios` (
+CREATE TABLE IF NOT EXISTS `clientes_servicios` (
    `id_cliente` INT NOT NULL,
    `id_servicio` INT NOT NULL,
    FOREIGN KEY (`id_cliente`) REFERENCES `clientes`(`id_cliente`) ON DELETE CASCADE ON UPDATE CASCADE,
