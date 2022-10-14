@@ -7,17 +7,17 @@ CREATE TABLE IF NOT EXISTS `clientes` (
    `nombre_cliente` VARCHAR(25) NOT NULL,
    `apellido_cliente` VARCHAR(25) NOT NULL,
    `email` VARCHAR(50) NOT NULL,
-   `dirección` VARCHAR(70) NOT NULL,
-   `telefono` INT
+   `dirección` VARCHAR(100) NOT NULL,
+   `telefono` VARCHAR(30)
 );
 CREATE TABLE IF NOT EXISTS `categorias_productos` (
    `id_categ_prod` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-   `descripción` VARCHAR(55) NOT NULL
+   `descripción` VARCHAR(70) NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS `productos` (
    `id_producto` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-   `nombre_producto` VARCHAR(25) NOT NULL,
+   `nombre_producto` VARCHAR(60) NOT NULL,
    `marca` VARCHAR(25) NOT NULL,
    `precio` FLOAT NOT NULL,
    `id_categ_prod` INT NOT NULL,
@@ -26,15 +26,13 @@ CREATE TABLE IF NOT EXISTS `productos` (
 
 CREATE TABLE IF NOT EXISTS `categorias_servicios` (
    `id_categ_serv` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-   `descripción` VARCHAR(55) NOT NULL
+   `descripción` VARCHAR(70) NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS `servicios` (
    `id_servicio` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-   `nombre` VARCHAR(25) NOT NULL,
+   `nombre` VARCHAR(70) NOT NULL,
    `precio` FLOAT NOT NULL,
-   `horario` TIME NOT NULL,
-   `fecha` DATE NOT NULL,
    `id_categ_serv` INT NOT NULL,
    FOREIGN KEY (`id_categ_serv`) REFERENCES `categorias_servicios`(`id_categ_serv`) ON DELETE CASCADE ON UPDATE CASCADE
 );
@@ -44,8 +42,8 @@ CREATE TABLE IF NOT EXISTS `proveedores` (
    `nombre_proveedor` VARCHAR(25) NOT NULL,
    `apellid_proveedor` VARCHAR(25),
    `email` VARCHAR(50) NOT NULL,
-   `direccion` VARCHAR(70) NOT NULL,
-   `telefono` INT
+   `direccion` VARCHAR(100) NOT NULL,
+   `telefono` VARCHAR(30)
 );
 
 CREATE TABLE IF NOT EXISTS `ventas` (
@@ -53,11 +51,12 @@ CREATE TABLE IF NOT EXISTS `ventas` (
    `precio` FLOAT NOT NULL,
    `descuento` FLOAT,
    `fecha` DATE NOT NULL,
+   `hora` TIME NOT NULL,
    `forma_pago` VARCHAR(50) NOT NULL,
    `precio_final` FLOAT NOT NULL,
    `id_cliente` INT NOT NULL,
-   `id_producto` INT NOT NULL,
-   `id_servicio` INT NOT NULL,
+   `id_producto` INT,
+   `id_servicio` INT,
    `id_proveedor` INT NOT NULL,
  FOREIGN KEY (`id_cliente`) REFERENCES `clientes`(`id_cliente`) ON DELETE CASCADE ON UPDATE CASCADE,
  FOREIGN KEY (`id_producto`) REFERENCES `productos`(`id_producto`) ON DELETE CASCADE ON UPDATE CASCADE,
