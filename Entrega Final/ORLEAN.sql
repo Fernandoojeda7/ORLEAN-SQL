@@ -1,5 +1,5 @@
 CREATE DATABASE IF NOT EXISTS orlean;
-
+ 
 USE orlean;
 
 CREATE TABLE IF NOT EXISTS `clientes` (
